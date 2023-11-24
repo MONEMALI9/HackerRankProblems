@@ -1,0 +1,10 @@
+/*
+Enter your query here.
+*/
+SELECT MAX(Months*Salary) , COUNT(*)
+FROM Employee
+WHERE (Months*Salary) = (
+        SELECT MAX(Months*Salary)
+        FROM EMPLOYEE
+    );
+    

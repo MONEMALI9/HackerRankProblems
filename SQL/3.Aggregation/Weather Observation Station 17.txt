@@ -1,0 +1,27 @@
+wrong answer
+/*
+Enter your query here.
+*/
+SELECT ROUND(LONG_W,4)
+    FROM STATION
+    WHERE LAT_N = (
+        SELECT ROUND(MIN(LAT_N),4)  >> wrong answer
+
+        FROM STATION
+        WHERE LAT_N > 38.7780
+        );
+
+correct answer
+
+/*
+Enter your query here.
+*/
+SELECT ROUND(LONG_W,4)
+    FROM STATION
+    WHERE LAT_N = (
+        SELECT MIN(LAT_N) >>> correct answer
+        FROM STATION
+        WHERE LAT_N > 38.7780
+        );
+
+

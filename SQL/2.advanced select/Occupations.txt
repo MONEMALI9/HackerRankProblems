@@ -1,0 +1,19 @@
+/*
+Enter your query here.
+*/
+--MYSQL , MSSQLSERVER
+SELECT 
+    MAX(CASE WHEN occupation = 'Doctor' THEN name END) AS Doctor,
+    MAX(CASE WHEN occupation = 'Professor' THEN name END) AS Professor,
+    MAX(CASE WHEN occupation = 'Singer' THEN name END) AS Singer,
+    MAX(CASE WHEN occupation = 'Actor' THEN name END) AS Actor
+FROM
+    (SELECT 
+         name, 
+         occupation,
+         ROW_NUMBER() OVER (PARTITION BY occupation ORDER BY name ASC) AS row_no
+     FROM
+        occupations
+    ) AS pivot_window
+GROUP BY
+    row_no;

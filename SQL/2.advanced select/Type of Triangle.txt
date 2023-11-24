@@ -1,0 +1,23 @@
+/*
+Enter your query here.
+*/
+-- WRONG answer
+--THE ORDER IS IMPORTANT
+SELECT CASE
+        WHEN A=B AND A=C AND B=C  THEN 'Equilateral'
+        WHEN A=B OR  A=C OR  B=C  THEN 'Isosceles'
+        WHEN A+B<=C OR A+C<=B OR B+C<=A THEN 'Not A Triangle'
+                --THE ORDER IS IMPORTANT
+        ELSE 'Scalene' 
+        END AS TRIANGLES_TYPE
+    FROM TRIANGLES
+
+
+    SELECT CASE
+        WHEN A+B<=C OR A+C<=B OR B+C<=A THEN 'Not A Triangle' 
+                --THE ORDER IS IMPORTANT
+        WHEN A=B AND B=C THEN 'Equilateral'
+        WHEN A=B OR B=C OR A=C THEN 'Isosceles' 
+        ELSE 'Scalene' 
+        END 
+    FROM TRIANGLES ;
